@@ -28,7 +28,7 @@
 import scraperwiki
 import lxml.html
 import time
-html = scraperwiki.scrape("http://www.readings.com.au/collection/bestselling-books")
+html = scraperwiki.scrape("http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/")
 root = lxml.html.fromstring(html)
 
 pos = 0
