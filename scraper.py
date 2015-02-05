@@ -32,9 +32,10 @@ html = scraperwiki.scrape("http://pitchfork.com/features/staff-lists/9465-the-to
 root = lxml.html.fromstring(html)
 
 pos = 0
-for el in root.cssselect("div.text year-end-review a"):
+for el in root.cssselect("div.text year-end-review"):
   title = el.cssselect("h1")[0].text_content()
   artist = el.cssselect("H2")[0].text_content()
+  artist2 = el.cssselect("H2").text_content()
   publisher = el.cssselect("H3")[0].text_content()
   link = el.attrib['href']
   isbn = link.split("/")[2]
@@ -47,6 +48,7 @@ for el in root.cssselect("div.text year-end-review a"):
   link = "http://www.readings.com.au" + link
   record = {"title" : title,
   "artist" : artist,
+  "artist2" : artist,
   "publisher" : publisher,
   "isbn" : isbn,
   "link" : link,
@@ -54,4 +56,4 @@ for el in root.cssselect("div.text year-end-review a"):
   "sdate" : time.strftime( "%Y-%m-%d" )
   }
   
-  scraperwiki.sqlite.save(unique_keys=["isbn", "sdate"], data=record)
+  scraperwiki.sqlite.save(unique_keys=["sdate"], data=record)
