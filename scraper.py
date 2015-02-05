@@ -28,8 +28,12 @@
 import scraperwiki
 import lxml.html
 import time
-html = scraperwiki.scrape("http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/")
+#html = scraperwiki.scrape("http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/")
+#root = lxml.html.fromstring(html)
+
+html = scrapePage(http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014)
 root = lxml.html.fromstring(html)
+
 
 pos = 0
 for el in root.cssselect("div.text year-end-review"):
@@ -41,8 +45,8 @@ for el in root.cssselect("div.text year-end-review"):
   isbn = link.split("/")[2]
   pos += 1
 
-  #print title
-  #print author
+  print title
+  print artist
   #print link
   print isbn
   link = "http://www.readings.com.au" + link
