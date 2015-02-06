@@ -45,10 +45,10 @@ for el in root.cssselect("div.inner"):
   print str(mytest.encode('utf-8'))
   
   if hasattr(el, 'div div h1'):
-    print el.cssselect('div div h1')[0].text_content()
+    print 'One' + el.cssselect('div div h1')[0].text_content()
     
   if hasattr(el, 'div div div h1'):
-    print el.cssselect('div div div h1')[0].text_content()
+    print 'Two' + el.cssselect('div div div h1')[0].text_content()
   
   if hasattr(el, 'div div div h1'):
     title = el.cssselect("div div div h1")[0].text_content()
