@@ -46,16 +46,26 @@ for el in root.cssselect("div[id^='album']"):
   #print str(mytest.encode('utf-8'))
   
   if len(el.cssselect('div.inner div.title h1')) ==0 : continue
-  print '3One' + el.cssselect('div.inner div.title h1')[0].text_content()
+  title = el.cssselect('div.inner div.title h1')[0].text_content()
+  artist = el.cssselect("div.inner div.title h2")[0].text_content()
+  publisher = el.cssselect("div.inner div.title h3")[0].text_content()  
+  rank = el.cssselect("div.inner div.review-content div.rank")[0].text_content()
+  reviewtext = el.cssselect("div.inner div.review-content p")[0].text_content()  
+  #link = el.attrib['href']
+  #isbn = link.split("/")[2]
+  pos += 1
 
-  if len(el.cssselect('div.inner div.title h1')) ==0:
-    title = el.cssselect("div.inner div.title h1")[0].text_content()
-    print 'has' + el.cssselect("div.inner div.title h1")[0].text_content()
-  else:
-    title = ''
-    
-  if hasattr(el, 'div.inner div.title h2'):
-    artist = el.cssselect("div.inner div.title h2")[0].text_content()
-  else:
-    artist = ''
-
+  print title
+  print artist
+  #print link
+  #link = "http://www.readings.com.au" + link
+  record = {
+  "title" : title,
+  "artist" : artist,
+  "publisher" : publisher,
+  "rank" : rank,
+  "reviewtext" : reviewtext,
+  "sdate" : time.strftime( "%Y-%m-%d" )
+  }
+  
+  scraperwiki.sqlite.save(unique_keys=["sdate"], data=record)
