@@ -36,17 +36,17 @@ root = lxml.html.fromstring(html)
 
 
 pos = 0
-for el in root.cssselect("div.year-end-review"):
+for el in root.cssselect("div.#album"):
   
   mytest = el.text_content()
 
   print str(mytest.encode('utf-8'))
   
-  if hasattr(el, 'div div div h1'):
-    print el.cssselect("h1")[0].text_content()
+  if hasattr(el, 'div div h1'):
+    print el.cssselect('div div h1')[0].text_content()
     
-  if hasattr(el, 'h2'):
-    print el.cssselect("h2")[0].text_content()
+  if hasattr(el, 'div div div h1'):
+    print el.cssselect('div div div h1')[0].text_content()
   
   if hasattr(el, 'div div div h1'):
     title = el.cssselect("div div div h1")[0].text_content()
