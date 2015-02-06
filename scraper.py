@@ -37,7 +37,8 @@ root = lxml.html.fromstring(html)
 
 pos = 0
 #for el in root.cssselect("div[starts-with(@id, 'album')]"):
-for el in root.cssselect("div.#album-99"):
+#for el in root.cssselect("div.#album-99"):
+for el in root.cssselect("div.inner"):
   
   mytest = el.text_content()
 
