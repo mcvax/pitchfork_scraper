@@ -36,7 +36,7 @@ root = lxml.html.fromstring(html)
 
 
 pos = 0
-for el in root.cssselect("div.text"):
+for el in root.cssselect("div.title"):
   
   if hasattr(el, 'h1'):
     print el.cssselect("h1")[0].text_content()
