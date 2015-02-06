@@ -39,8 +39,8 @@ pos = 0
 for el in root.cssselect("div.year-end-review"):
   
   mytest = el.text_content()
-  
-  print mytest.text.encode('utf-8')
+
+  print str(mytest.encode('utf-8'))
   
   if hasattr(el, 'div div div h1'):
     print el.cssselect("h1")[0].text_content()
