@@ -38,7 +38,9 @@ root = lxml.html.fromstring(html)
 pos = 0
 for el in root.cssselect("div.year-end-review"):
   
-  print(el.text_content())
+  mytest = el.text_content()
+  
+  print mytest.text.encode('utf-8')
   
   if hasattr(el, 'div div div h1'):
     print el.cssselect("h1")[0].text_content()
