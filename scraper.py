@@ -36,36 +36,34 @@ root = lxml.html.fromstring(html)
 
 
 pos = 0
-#for el in root.cssselect("div[starts-with(@id, 'album')]"):
-#for el in root.cssselect("div.#album-99"):
 for el in root.cssselect("div[id^='album']"):
-#for el in root.cssselect('h1'):
   
-  mytest = el.text_content()
-
-  #print str(mytest.encode('utf-8'))
+    mytest = el.text_content()
   
-  if len(el.cssselect('div.inner div.title h1')) ==0 : continue
-  title = el.cssselect('div.inner div.title h1')[0].text_content()
-  artist = el.cssselect("div.inner div.title h2")[0].text_content()
-  publisher = el.cssselect("div.inner div.title h3")[0].text_content()  
-  rank = el.cssselect("div.inner div.review-content div.rank")[0].text_content()
-  reviewtext = el.cssselect("div.inner div.review-content p")[0].text_content()  
-  #link = el.attrib['href']
-  #isbn = link.split("/")[2]
-  pos += 1
-
-  print title
-  print artist
-  #print link
-  #link = "http://www.readings.com.au" + link
-  record = {
-  "title" : title,
-  "artist" : artist,
-  "publisher" : publisher,
-  "rank" : rank,
-  "reviewtext" : reviewtext,
-  "sdate" : time.strftime( "%Y-%m-%d" )
-  }
+    #print str(mytest.encode('utf-8'))
+    
+    if len(el.cssselect('div.inner div.title h1')) ==0 : continue
+    title = el.cssselect('div.inner div.title h1')[0].text_content()
+    artist = el.cssselect("div.inner div.title h2")[0].text_content()
+    publisher = el.cssselect("div.inner div.title h3")[0].text_content()  
+    rank = el.cssselect("div.inner div.review-content div.rank")[0].text_content()
+    reviewtext = el.cssselect("div.inner div.review-content p")[0].text_content()  
+    #link = el.attrib['href']
+    #isbn = link.split("/")[2]
+    pos += 1
   
-  scraperwiki.sqlite.save(unique_keys=["sdate", "rank"], data=record)
+    print title
+    print artist
+    #print link
+    #link = "http://www.readings.com.au" + link
+    record = {
+    "title" : title,
+    "artist" : artist,
+    "pos" : pos,
+    "publisher" : publisher,
+    "rank" : rank,
+    "reviewtext" : reviewtext,
+    "sdate" : time.strftime( "%Y-%m-%d" )
+    }
+    
+    scraperwiki.sqlite.save(unique_keys=["sdate", "rank"], data=record)
