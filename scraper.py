@@ -37,6 +37,12 @@ root = lxml.html.fromstring(html)
 
 pos = 0
 for el in root.cssselect("div.inner"):
+  
+  
+  print el.cssselect("h1")[0].text_content()
+  print el.cssselect("h2")[0].text_content()
+  
+  
   title = el.cssselect("h1")[0].text_content()
   artist = el.cssselect("H2")[0].text_content()
   artist2 = el.cssselect("H2").text_content()
