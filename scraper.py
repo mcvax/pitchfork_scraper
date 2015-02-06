@@ -45,31 +45,17 @@ for el in root.cssselect("div[id^='album']"):
 
   #print str(mytest.encode('utf-8'))
   
-  if hasattr(el, 'h1'):
-    print '1One' + el.cssselect('h1')[0].text_content()
-    
-  if hasattr(el, 'div.inner div.title h1'):
-    print '2One' + el.cssselect('div.inner div.title h1')[0].text_content()
-
   if len(el.cssselect('div.inner div.title h1')) ==0 : continue
   print '3One' + el.cssselect('div.inner div.title h1')[0].text_content()
 
-  if hasattr(el, 'div div h1'):
-    print '4One' + el.cssselect('div div h1')[0].text_content()
-    
-  if hasattr(el, 'div div div h1'):
-    print '5One' + el.cssselect('div div div h1')[0].text_content()
-
-  if hasattr(el, 'h2'):
-    print 'Two' + el.cssselect('h2')[0].text_content()
-  
-  if hasattr(el, 'div div div h1'):
-    title = el.cssselect("div div div h1")[0].text_content()
+  if hasattr(el, 'div.inner div.title h1'):
+    title = el.cssselect("div.inner div.title h1")[0].text_content()
+    print 'has' + el.cssselect("div.inner div.title h1")[0].text_content()
   else:
     title = ''
     
-  if hasattr(el, 'div div div h2'):
-    artist = el.cssselect("div div div H2")[0].text_content()
+  if hasattr(el, 'div.inner div.title h2'):
+    artist = el.cssselect("div.inner div.title h2")[0].text_content()
   else:
     artist = ''
 
