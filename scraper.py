@@ -51,7 +51,7 @@ for el in root.cssselect("div[id^='album']"):
   if hasattr(el, 'div.inner div.title h1'):
     print 'One' + el.cssselect('div.inner div.title h1')[0].text_content()
 
-  if len(el.cssselect('div.inner div.title h1') ==0 : continue
+  if len(el.cssselect('div.inner div.title h1')) ==0 : continue
   print 'One' + el.cssselect('div.inner div.title h1')[0].text_content()
 
   if hasattr(el, 'div div h1'):
