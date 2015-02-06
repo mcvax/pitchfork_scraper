@@ -38,7 +38,7 @@ root = lxml.html.fromstring(html)
 pos = 0
 #for el in root.cssselect("div[starts-with(@id, 'album')]"):
 #for el in root.cssselect("div.#album-99"):
-for el in root.cssselect("div.inner"):
+for el in root.cssselect('h1'):
   
   mytest = el.text_content()
 
@@ -47,8 +47,8 @@ for el in root.cssselect("div.inner"):
   if hasattr(el, 'div div h1'):
     print 'One' + el.cssselect('div div h1')[0].text_content()
     
-  if hasattr(el, 'div div div h1'):
-    print 'Two' + el.cssselect('div div div h1')[0].text_content()
+  if hasattr(el, 'h2'):
+    print 'Two' + el.cssselect('h2')[0].text_content()
   
   if hasattr(el, 'div div div h1'):
     title = el.cssselect("div div div h1")[0].text_content()
