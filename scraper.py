@@ -36,21 +36,21 @@ root = lxml.html.fromstring(html)
 
 
 pos = 0
-for el in root.cssselect("div.title"):
+for el in root.cssselect("div.inner"):
   
-  if hasattr(el, 'h1'):
+  if hasattr(el, 'div div div h1'):
     print el.cssselect("h1")[0].text_content()
     
   if hasattr(el, 'h2'):
     print el.cssselect("h2")[0].text_content()
   
-  if hasattr(el, 'h1'):
-    title = el.cssselect("h1")[0].text_content()
+  if hasattr(el, 'div div div h1'):
+    title = el.cssselect("div div div h1")[0].text_content()
   else:
     title = ''
     
-  if hasattr(el, 'h2'):
-    artist = el.cssselect("H2")[0].text_content()
+  if hasattr(el, 'div div div h2'):
+    artist = el.cssselect("div div div H2")[0].text_content()
   else:
     artist = ''
     
