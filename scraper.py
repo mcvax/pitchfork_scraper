@@ -68,4 +68,4 @@ for el in root.cssselect("div[id^='album']"):
   "sdate" : time.strftime( "%Y-%m-%d" )
   }
   
-  scraperwiki.sqlite.save(unique_keys=["sdate"], data=record)
+  scraperwiki.sqlite.save(unique_keys=["sdate", "rank"], data=record)
