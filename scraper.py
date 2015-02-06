@@ -43,27 +43,29 @@ for el in root.cssselect("div.text"):
   if hasattr(el, 'h2'):
     print el.cssselect("h2")[0].text_content()
   
-  
-  title = el.cssselect("h1")[0].text_content()
-  artist = el.cssselect("H2")[0].text_content()
-  artist2 = el.cssselect("H2").text_content()
-  publisher = el.cssselect("H3")[0].text_content()
-  link = el.attrib['href']
-  isbn = link.split("/")[2]
+  if hasattr(el, 'h1'):
+    title = el.cssselect("h1")[0].text_content()
+    
+  if hasattr(el, 'h2'):
+    artist = el.cssselect("H2")[0].text_content()
+  #artist2 = el.cssselect("H2").text_content()
+  #publisher = el.cssselect("H3")[0].text_content()
+  #link = el.attrib['href']
+  #isbn = link.split("/")[2]
   pos += 1
 
   print title
   print artist
   #print link
-  print isbn
-  link = "http://www.readings.com.au" + link
+  #print isbn
+  #link = "http://www.readings.com.au" + link
   record = {"title" : title,
   "artist" : artist,
-  "artist2" : artist,
-  "publisher" : publisher,
-  "isbn" : isbn,
-  "link" : link,
-  "pos" : pos,
+  #"artist2" : artist,
+  #"publisher" : publisher,
+  #"isbn" : isbn,
+  #"link" : link,
+  #"pos" : pos,
   "sdate" : time.strftime( "%Y-%m-%d" )
   }
   
