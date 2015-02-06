@@ -36,7 +36,7 @@ root = lxml.html.fromstring(html)
 
 
 pos = 0
-for el in root.cssselect("div.inner"):
+for el in root.cssselect("div.year-end-review"):
   
   print(el.text_content())
   
