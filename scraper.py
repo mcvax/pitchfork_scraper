@@ -43,11 +43,20 @@ for el in root.cssselect("div[id^='album']"):
   
   mytest = el.text_content()
 
-  print str(mytest.encode('utf-8'))
+  #print str(mytest.encode('utf-8'))
   
+  if hasattr(el, 'h1'):
+    print 'One' + el.cssselect('h1')[0].text_content()
+    
+  if hasattr(el, 'div h1'):
+    print 'One' + el.cssselect('div h1')[0].text_content()
+
   if hasattr(el, 'div div h1'):
     print 'One' + el.cssselect('div div h1')[0].text_content()
     
+  if hasattr(el, 'div div div h1'):
+    print 'One' + el.cssselect('div div div h1')[0].text_content()
+
   if hasattr(el, 'h2'):
     print 'Two' + el.cssselect('h2')[0].text_content()
   
@@ -60,26 +69,4 @@ for el in root.cssselect("div[id^='album']"):
     artist = el.cssselect("div div div H2")[0].text_content()
   else:
     artist = ''
-    
-  #artist2 = el.cssselect("H2").text_content()
-  #publisher = el.cssselect("H3")[0].text_content()
-  #link = el.attrib['href']
-  #isbn = link.split("/")[2]
-  pos += 1
 
-  print title
-  print artist
-  #print link
-  #print isbn
-  #link = "http://www.readings.com.au" + link
-  record = {"title" : title,
-  "artist" : artist,
-  #"artist2" : artist,
-  #"publisher" : publisher,
-  #"isbn" : isbn,
-  #"link" : link,
-  #"pos" : pos,
-  "sdate" : time.strftime( "%Y-%m-%d" )
-  }
-  
-  scraperwiki.sqlite.save(unique_keys=["sdate"], data=record)
