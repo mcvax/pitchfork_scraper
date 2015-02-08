@@ -65,8 +65,8 @@ while page < 6:
       #link = el.attrib['href']
       #isbn = link.split("/")[2]
     
-      print title
-      print artist
+      #print title
+      #print artist
       #print link
       #link = "http://www.readings.com.au" + link
       record = {
