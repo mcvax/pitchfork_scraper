@@ -72,13 +72,13 @@ def scrapePage(url):
   html = None
   attempts = 0
   
-    while html == None and attempts < 3:
-      try: html = scraperwiki.scrape(url)
-      except:
-        attempts += 1
-        continue
+  while html == None and attempts < 3:
+    try: html = scraperwiki.scrape(url)
+    except:
+      attempts += 1
+      continue
   
-      if html == None and attempts == 3:
-        print 'Unable to scrape ' + review_href
+    if html == None and attempts == 3:
+      print 'Unable to scrape ' + review_href
 
-    return html
+  return html
