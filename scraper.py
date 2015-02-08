@@ -26,12 +26,12 @@ import scraperwiki
 import lxml.html
 import time
 
-basehtml = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014"
+basehtml = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/{0}/"
 page = 1
 
-while page < 3:
+while page < 6:
 
-  html = scrapePage(basehtml + )
+  html = scrapePage(basehtml.format(page))
 
   root = lxml.html.fromstring(html)
 
