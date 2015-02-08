@@ -47,8 +47,7 @@ for el in root.cssselect("div[id^='album']"):
     reviewtext = el.cssselect("div.inner div.review-content p")[0].text_content()  
     #link = el.attrib['href']
     #isbn = link.split("/")[2]
-    pos += 1
-  
+    
     print title
     print artist
     #print link
@@ -56,7 +55,6 @@ for el in root.cssselect("div[id^='album']"):
     record = {
     "title" : title,
     "artist" : artist,
-    "pos" : pos,
     "publisher" : publisher,
     "rank" : rank,
     "reviewtext" : reviewtext,
