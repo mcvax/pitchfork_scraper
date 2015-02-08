@@ -26,6 +26,22 @@ import scraperwiki
 import lxml.html
 import time
 
+def scrapePage(url):
+  
+  html = None
+  attempts = 0
+  
+  while html == None and attempts < 3:
+    try: html = scraperwiki.scrape(url)
+    except:
+      attempts += 1
+      continue
+  
+    if html == None and attempts == 3:
+      print 'Unable to scrape ' + review_href
+
+  return html
+
 basehtml = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/{0}/"
 page = 1
 
@@ -67,18 +83,4 @@ while page < 6:
 
   page += 1
   
-def scrapePage(url):
-  
-  html = None
-  attempts = 0
-  
-  while html == None and attempts < 3:
-    try: html = scraperwiki.scrape(url)
-    except:
-      attempts += 1
-      continue
-  
-    if html == None and attempts == 3:
-      print 'Unable to scrape ' + review_href
 
-  return html
