@@ -34,17 +34,14 @@ import time
 html = scraperwiki.scrape("http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014")
 root = lxml.html.fromstring(html)
 
-
-pos = 0
 for el in root.cssselect("div[id^='album']"):
   
-    mytest = el.text_content()
-  
+    #mytest = el.text_content()
     #print str(mytest.encode('utf-8'))
     
     if len(el.cssselect('div.inner div.title h1')) ==0 : continue
-    title = el.cssselect('div.inner div.title h1')[0].text_content()
-    artist = el.cssselect("div.inner div.title h2")[0].text_content()
+    title = el.cssselect('div.inner div.title h2')[0].text_content()
+    artist = el.cssselect("div.inner div.title h1")[0].text_content()
     publisher = el.cssselect("div.inner div.title h3")[0].text_content()  
     rank = el.cssselect("div.inner div.review-content div.rank")[0].text_content()
     reviewtext = el.cssselect("div.inner div.review-content p")[0].text_content()  
@@ -63,7 +60,8 @@ for el in root.cssselect("div[id^='album']"):
     "publisher" : publisher,
     "rank" : rank,
     "reviewtext" : reviewtext,
-    "sdate" : time.strftime( "%Y-%m-%d" )
+    "scrape_date" : time.strftime( "%Y-%m-%d" )
+    
     }
     
-    scraperwiki.sqlite.save(unique_keys=["sdate", "rank"], data=record)
+    scraperwiki.sqlite.save(unique_keys=["scrape_date", "rank"], data=record)
