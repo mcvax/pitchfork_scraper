@@ -102,5 +102,24 @@ def extractPage (baseURL, mytrackType):
 
 mybaseURL = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/{0}/"
 extractPage(mybaseURL, "album")
+
+mybaseURL = "http://pitchfork.com/features/staff-lists/9555-the-100-best-tracks-of-2014/{0}/"
+extractPage(mybaseURL, "track")
+
+mybaseURL = "http://pitchfork.com/features/staff-lists/9558-the-50-best-albums-of-2014/{0}/"
+extractPage(mybaseURL, "album")
+
+mybaseURL = "http://pitchfork.com/features/staff-lists/9466-the-top-200-tracks-of-2010-2014/{0}/"
+extractPage(mybaseURL, "track")
+
+mybaseURL = "http://pitchfork.com/features/staff-lists/9293-the-top-50-albums-of-2013/{0}/"
+extractPage(mybaseURL, "album")
+
+mybaseURL = "http://pitchfork.com/features/staff-lists/9288-the-top-tracks-of-2013/{0}/"
+extractPage(mybaseURL, "track")
+
+
+
+
   
 
