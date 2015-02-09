@@ -42,13 +42,15 @@ def scrapePage(url):
 
   return html
 
-def extractTrack(html):
+def extractTrack(html, mytrackType):
 
   root = lxml.html.fromstring(html)
 
   pagetitle = root.cssselect('head title')[0].text_content()
   
-  for el in root.cssselect("div[id^='album']"):
+  myRoot = "div[id^='{0}']".format(mytrackType)
+  
+  for el in root.cssselect(myRoot):
   
       #mytest = el.text_content()
       #print str(mytest.encode('utf-8'))
@@ -62,15 +64,13 @@ def extractTrack(html):
       #link = el.attrib['href']
       #isbn = link.split("/")[2]
     
-      tracktype = 'album'
-    
       #print title
       #print artist
       #print link
       #link = "http://www.readings.com.au" + link
       record = {
       "pagetitle" : pagetitle,
-      "tracktype" : tracktype,
+      "tracktype" : mytrackType,
       "title" : title,
       "artist" : artist,
       "publisher" : publisher,
@@ -101,7 +101,6 @@ def extractPage (baseURL):
 ### Start extraction
 
 mybaseURL = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/{0}/"
-
-extractPage(mybaseURL)
+extractPage(mybaseURL, "album")
   
 
