@@ -42,15 +42,12 @@ def scrapePage(url):
 
   return html
 
-basehtml = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/{0}/"
-page = 1
-
-while page < 6:
-
-  html = scrapePage(basehtml.format(page))
+def extractTrack(html):
 
   root = lxml.html.fromstring(html)
 
+  pagetitle = el.cssselect('head title')[0].text_content()
+  
   for el in root.cssselect("div[id^='album']"):
   
       #mytest = el.text_content()
@@ -70,6 +67,8 @@ while page < 6:
       #print link
       #link = "http://www.readings.com.au" + link
       record = {
+      "pagetitle" : pagetitle
+      "tracktype" : tracktype
       "title" : title,
       "artist" : artist,
       "publisher" : publisher,
@@ -80,7 +79,27 @@ while page < 6:
       }
     
       scraperwiki.sqlite.save(unique_keys=["scrape_date", "rank"], data=record)
+  
+  return
 
-  page += 1
+def extractPage (baseURL)
+
+  page = 1
+
+  while page < 6:
+
+    myhtml = scrapePage(baseURL.format(page))
+
+    extractTrack(myhtml)
+
+    page += 1
+
+  return
+
+### Start extraction
+
+mybaseURL = "http://pitchfork.com/features/staff-lists/9465-the-top-100-albums-of-2010-2014/{0}/"
+
+extractPage(mybaseURL)
   
 
