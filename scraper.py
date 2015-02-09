@@ -46,7 +46,7 @@ def extractTrack(html):
 
   root = lxml.html.fromstring(html)
 
-  pagetitle = el.cssselect('head title')[0].text_content()
+  pagetitle = root.cssselect('head title')[0].text_content()
   
   for el in root.cssselect("div[id^='album']"):
   
