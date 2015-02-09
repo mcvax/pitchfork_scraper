@@ -62,6 +62,8 @@ def extractTrack(html):
       #link = el.attrib['href']
       #isbn = link.split("/")[2]
     
+      tracktype = 'album'
+    
       #print title
       #print artist
       #print link
@@ -77,7 +79,7 @@ def extractTrack(html):
       "scrape_date" : time.strftime( "%Y-%m-%d" )
     
       }
-    
+      
       scraperwiki.sqlite.save(unique_keys=["scrape_date", "rank"], data=record)
   
   return
