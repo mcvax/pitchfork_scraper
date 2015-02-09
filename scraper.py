@@ -62,7 +62,7 @@ def extractTrack(html):
       #link = el.attrib['href']
       #isbn = link.split("/")[2]
     
-      tracktype = 'album'
+      tracktype1 = 'album'
     
       #print title
       #print artist
@@ -70,7 +70,7 @@ def extractTrack(html):
       #link = "http://www.readings.com.au" + link
       record = {
       "pagetitle" : pagetitle
-      "tracktype" : tracktype
+      "tracktype" : tracktype1
       "title" : title,
       "artist" : artist,
       "publisher" : publisher,
