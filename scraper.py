@@ -84,7 +84,7 @@ def extractTrack(html):
   
   return
 
-def extractPage (baseURL)
+def extractPage (baseURL):
 
   page = 1
 
