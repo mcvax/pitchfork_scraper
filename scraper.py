@@ -84,7 +84,7 @@ def extractTrack(html, mytrackType):
   
   return
 
-def extractPage (baseURL):
+def extractPage (baseURL, mytrackType):
 
   page = 1
 
@@ -92,7 +92,7 @@ def extractPage (baseURL):
 
     myhtml = scrapePage(baseURL.format(page))
 
-    extractTrack(myhtml)
+    extractTrack(myhtml, mytrackType)
 
     page += 1
 
